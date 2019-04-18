@@ -8,15 +8,23 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
+import { HeaderComponent } from './components/header/header.component';
+import { PlayersComponent } from './components/players/players.component';
+import { ClubsComponent } from './components/clubs/clubs.component';
 
 const appRoutes: Routes = [
-  {path: '', component: HomeComponent}
+  {path: '', component: HomeComponent},
+  {path: 'players', component: PlayersComponent},
+  {path: 'clubs', component: ClubsComponent}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    HeaderComponent,
+    PlayersComponent,
+    ClubsComponent
   ],
   imports: [
     BrowserModule,
