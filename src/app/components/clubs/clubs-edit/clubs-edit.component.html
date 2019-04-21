@@ -1,0 +1,23 @@
+
+
+<div class="content login-page form login-form">
+            <h5 class="card-title">Edit club: {{club.name}}</h5>
+        <hr/>
+        <p class="card-text">
+          <b>Name (old: {{club.name}}):</b> 
+          <br>
+          <input [(ngModel)]="clubNewName" name="name" type="text" placeholder="name"/>
+          <br>
+          <b>Founding year:</b> 
+          <input [(ngModel)]="clubNewYear" name="foundingyear" type="text" placeholder="foundingyear"/>
+          <br>
+          <b>Funds:</b> 
+          <input [(ngModel)]="clubNewFunds" name="funds" type="text" placeholder="funds"/>
+          <br>
+          <b>Logo (old: {{club.logo}}):</b>
+          <input [(ngModel)]="clubNewLogo" name="logo" type="text" placeholder="logo"/>
+          <br>
+        </p>
+        <a (click)="editClub()" class="btn btn-warning mt-2 mr-2">Confirm</a> 
+        <a class="btn btn-primary  mt-2 mr-2">Cancel</a> 
+  </div>

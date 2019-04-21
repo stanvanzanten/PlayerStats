@@ -1,16 +1,18 @@
 <app-header></app-header>
 <div class="row">
-    <div class="col-xs">
-        <ul class="list-group">
-            <a class="list-group-item" style="cursor: pointer" *ngFor="let player of players; let i = index" (click)="onEditItem(i)">
-              <img [src]="player.imageLink" alt="{{ player.imageLink }}" class="img-responsive" style="max-height: 100px; max-width: 150px">
-              <label>Naam:</label> {{ player.firstname }} <br>
-              <label>Lastname:</label> {{player.lastname}} <br>
-              <label>Age:</label> {{player.age}} <br>
-              <label>Length:</label> {{player.length}} <br>
-              <label>Weight:</label> {{player.weight}} <br>
-              <label>Club:</label> {{player.club}}
-            </a>
-          </ul>
-    </div>
+  <div class="col-xs">
+    <ul class="list-group">
+      <a class="list-group-item" style="cursor: pointer" *ngFor="let player of players; let i = index"
+        (click)="onEditItem(i)">
+        <img [src]="player.imageLink" alt="{{ player.imageLink }}" class="img-responsive"
+          style="max-height: 100px; max-width: 150px"> <br>
+        <label>Naam:</label> {{ player.firstname }} <br>
+        <label>Lastname:</label> {{player.lastname}} <br>
+        <label>Age:</label> {{player.age}} <br>
+        <label>Length:</label> {{player.length}} <br>
+        <label>Weight:</label> {{player.weight}} <br>
+        <label>Club:</label> {{player.club}}
+      </a>
+    </ul>
+  </div>
 </div>

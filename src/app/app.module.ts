@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { Observable, Subject, ReplaySubject, from, of, range } from 'rxjs';
 import { HttpModule } from '@angular/http';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -12,11 +12,19 @@ import { HeaderComponent } from './components/header/header.component';
 import { PlayersComponent } from './components/players/players.component';
 import { ClubsComponent } from './components/clubs/clubs.component';
 import { BackendService } from './services/backend.service';
+import { LoginComponent } from './components/user/login/login.component';
+import { RegisterComponent } from './components/user/register/register.component';
+import { AuthService } from './services/auth.service';
+import { TokenInterceptorService } from './services/token-interceptor.service';
+import { AuthGuard } from './services/auth.guard';
+import { ClubsEditComponent } from './components/clubs/clubs-edit/clubs-edit.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'players', component: PlayersComponent},
-  {path: 'clubs', component: ClubsComponent}
+  {path: 'clubs', component: ClubsComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent}
 ];
 
 @NgModule({
@@ -25,7 +33,10 @@ const appRoutes: Routes = [
     HomeComponent,
     HeaderComponent,
     PlayersComponent,
-    ClubsComponent
+    ClubsComponent,
+    LoginComponent,
+    RegisterComponent,
+    ClubsEditComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +46,12 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [BackendService],
+  providers: [BackendService, AuthService, AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

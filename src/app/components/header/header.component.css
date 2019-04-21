@@ -2,12 +2,3 @@
     background-color: #55cca2 !important;
     font-family: 'Poppins', sans-serif !important;
 }
-
-@media (min-width: 768px) {
-    .navbar-brand.abs {
-        position: absolute;
-        width: 100%;
-        left: 0;
-        text-align: center;
-    }
-}

@@ -1,0 +1,21 @@
+<app-header></app-header>
+<div class="login-page">
+    <div class="form">
+      <form class="login-form">
+        <input [(ngModel)]="loginUserData.name" name="name" type="text" placeholder="username"/>
+        <input [(ngModel)]="loginUserData.password" name="password" type="password" placeholder="password" required/>
+        <button (click)="loginUser()" type="button">Log in</button>
+        <p class="message">
+          Not registered?
+          <a routerLink='/signup' routerLinkActive="active">Sign up</a>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <div *ngIf="showResultBox">
+      <div class="content login-page form login-form">
+          <h4>{{displayresult.result}}</h4>
+          <p>{{displayresult.message}}</p>
+      </div>
+  </div>
