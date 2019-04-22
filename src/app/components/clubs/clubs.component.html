@@ -1,36 +1,22 @@
 <app-header></app-header>
 <div class="row">
-  <ng-template [ngIf]="!authService.loggedIn()">
-    <div class="col-xs">
-      <ul class="list-group">
-        <a class="list-group-item" style="cursor: pointer" *ngFor="let club of clubs; let i = index"
-          (click)="onEditItem(i)">
-          <img [src]="club.logo" alt="{{ club.logo }}" class="img-responsive"
-            style="max-height: 100px; max-width: 150px"> <br>
-          <label>Naam:</label> {{ club.name }} <br>
-          <label>Founding year:</label> {{club.foundingyear}} <br>
-          <label>Funds:</label> {{club.funds}} <br>
-          <label>Players:</label> {{club.players}}
-        </a>
-      </ul>
+  <div class="col">
+    <div class="col-md-4" *ngFor="let club of clubs">
+      <div *ngIf="isPopClub(club)">
+        <h4>{{club.name}}</h4>
+        <h5 class="card-title">
+          <img [src]="club.logo" alt="" class="img-rounded imagelogo">
+        </h5>
+        <a (click)="onSelect(club)" class="btn btn-success">More info</a>
+      </div>
     </div>
-  </ng-template>
-  <ng-template [ngIf]="authService.loggedIn()">
-      <div class="col">
-          <ul class="list-group">
-            <a class="list-group-item" style="cursor: pointer" *ngFor="let club of clubs; let i = index"
-              (click)="onEditItem(i)">
-              <img [src]="club.logo" alt="{{ club.logo }}" class="img-responsive"
-                style="max-height: 100px; max-width: 150px">
-              <label>Naam:</label> {{ club.name }} <br>
-              <label>Founding year:</label> {{club.foundingyear}} <br>
-              <label>Funds:</label> {{club.funds}} <br>
-              <label>Players:</label> {{club.players}}
-            </a>
-          </ul>
-        </div>
-        <div class="col">
-            <app-clubs-edit></app-clubs-edit>
-        </div>
-  </ng-template>
+  </div>
+  <div class="col-6">
+      <app-clubs-detail [club]="selectedOperator"></app-clubs-detail>
+    </div>
+</div>
+<br>
+<div class="createbutton">
+  <a *ngIf="authService.loggedIn()" routerLink='/club/create' routerLinkActive="active" class="btn btn-success">Create
+    club</a>
 </div>

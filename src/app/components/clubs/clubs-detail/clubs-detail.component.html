@@ -1,0 +1,35 @@
+<app-clubs-edit [club]="selectedClub"></app-clubs-edit>
+<br>
+<div *ngIf="club">
+  <div class="content login-page form login-form">
+            <h5 class="card-title">
+              {{club.name}} club information
+              </h5>
+              <hr/>
+              <h5 class="card-title">
+                <img [src]="club.logo" alt="" style="max-width: 100%" class="img-rounded">
+              </h5>
+              <hr/>
+              <p> 
+                <br>
+                <b>Name:</b> 
+                <br/>
+                {{club.name}}
+                <br/> 
+                <b>Founding year:</b> 
+                <br/>
+                {{club.foundingyear}}
+                <br/>
+                <b>Funds:</b>
+                <br/>
+                {{ club.funds }}
+                <br/>
+                <b>Players</b>
+                <br>
+                {{ club.players }}
+              </p>
+              <button [routerLink]="['/club', club._id]" routerLinkActive="active" type="button" class="btn btn-primary mt-2 mr-2">View</button>
+              <button *ngIf="authService.loggedIn()" (click)="onSelect(club)" type="button" class="btn btn-warning  mt-2 mr-2">Edit</button> 
+              <button *ngIf="authService.loggedIn()" (click)="deleteClub()" type="button" class="btn btn-danger mt-2 mr-2">Delete</button>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-<!-- <a *ngFor= "let club of clubs;">
+<div *ngIf="club">
 <div class="content login-page form login-form">
             <h5 class="card-title">Edit club: {{club.name}}</h5>
         <hr/>
@@ -22,44 +22,4 @@
         <a (click)="editClub()" class="btn btn-warning mt-2 mr-2">Confirm</a> 
         <a class="btn btn-primary  mt-2 mr-2">Cancel</a> 
   </div>
-</a> -->
-
-<div class="row">
-    <div class="col">
-      <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-        <div class="row">
-          <div class="col form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" class="form-control" name="name" ngModel required>
-          </div>
-          <div class="col form-group">
-            <label for="foundingyear">Founding year</label>
-            <input type="text" id="foundingyear" class="form-control" name="foundingyear" ngModel required>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col form-group">
-            <label for="funds">Funds</label>
-            <input type="text" id="funds" class="form-control" name="funds" ngModel required>
-          </div>
-          <div class="col form-group">
-            <label for="logo">Logo</label>
-            <input type="text" id="logo" class="form-control" name="logo" ngModel required>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col form-group">
-            <label for="players">Players</label>
-            <input type="text" id="players" class="form-control" name="players" ngModel required>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <button class="btn btn-success" type="button" (click)="editClub()">Confirm</button>
-            <button class="btn btn-danger" type="button" (click)="onDelete()">Delete</button>
-            <button class="btn btn-primary" type="button" (click)="onClear()">Clear</button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
+</div>

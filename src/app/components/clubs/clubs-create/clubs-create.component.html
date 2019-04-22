@@ -1,0 +1,20 @@
+<app-header></app-header>
+<div class="login-page">
+    <div class="form">
+        <form class="login-form">
+            <h4>Create a new Club:<br> <br></h4>
+            <input [(ngModel)]="clubCreateData.name" name="name" type="text" placeholder="name" />
+            <input [(ngModel)]="clubCreateData.foundingyear" name="foundingyear" type="text" placeholder="foundingyear" />
+            <input [(ngModel)]="clubCreateData.funds" name="funds" type="text" placeholder="funds" />
+            <input [(ngModel)]="clubCreateData.logo" name="logo" type="text" placeholder="logo" />
+            <button (click)="createClub()" type="button" class="btn btn-warning warningbutton">Confirm</button>
+        </form>
+        <a routerLink="/clubs" routerLinkActive="active" class="btn btn-primary mt-2">Return</a>
+    </div>
+</div>
+<div *ngIf="showResultBox">
+    <div class="content login-page form login-form">
+        <h4>{{displayresult.result}}</h4>
+        <p>{{displayresult.message}}</p>
+    </div>
+</div>

@@ -20,7 +20,6 @@ export class ClubsEditComponent implements OnInit {
   clubNewFunds = 0;
   clubNewLogo = '';
   selectedItem : Club;
-  id: number;
 
   constructor(
     private _backendService: BackendService,
@@ -29,18 +28,7 @@ export class ClubsEditComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this._backendService.getClub(this.club._id)
-    .then(clubs => {
-      this.selectedItem = clubs
-      this.clubForm.setValue({
-        name : this.selectedItem.name,
-        foundingyear: this.selectedItem.foundingyear,
-        funds: this.selectedItem.funds,
-        logo: this.selectedItem.logo,
-        players: this.selectedItem.players
-      })
-    })
-  }
+    }
 
   editClub() {
   if (this._authService.loggedIn) {
