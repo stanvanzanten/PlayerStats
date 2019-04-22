@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Club } from 'src/app/models/club.model';
 import { BackendService } from 'src/app/services/backend.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { ClubsComponent } from '../clubs.component';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-clubs-edit',
@@ -11,12 +12,15 @@ import { ClubsComponent } from '../clubs.component';
 })
 export class ClubsEditComponent implements OnInit {
 
+  @ViewChild("f") clubForm : NgForm
   @Input() club: Club;
   clubEdit;
   clubNewName = '';
   clubNewYear = 0;
   clubNewFunds = 0;
   clubNewLogo = '';
+  selectedItem : Club;
+  id: number;
 
   constructor(
     private _backendService: BackendService,
@@ -25,6 +29,17 @@ export class ClubsEditComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    this._backendService.getClub(this.club._id)
+    .then(clubs => {
+      this.selectedItem = clubs
+      this.clubForm.setValue({
+        name : this.selectedItem.name,
+        foundingyear: this.selectedItem.foundingyear,
+        funds: this.selectedItem.funds,
+        logo: this.selectedItem.logo,
+        players: this.selectedItem.players
+      })
+    })
   }
 
   editClub() {
